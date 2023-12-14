@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ConsumingWebApiCoreUI.Models.Products>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+
+    <!--<a asp-action="Create">Create New</a>-->
+    <form>
+        <div class="text-center panel-body">
+            <button asp-action="AddProduct" type="submit" class="btn btn-sm btn-primary">Add A Products</button>
+            <button asp-action="GetProduct" type="submit" class="btn btn-sm btn-primary">Get Product Details</button>
+
+        </div>
+    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.productId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.unitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.availableQuantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.unitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.availableQuantity)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateProduct", new {  id=item.productId }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "DeleteProduct", new {  id=item.productId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
